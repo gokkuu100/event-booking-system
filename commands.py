@@ -58,6 +58,57 @@ def book_event(user, event):
     else:
         click.echo(f"Event {event} not found.")
 
+@cli.command()
+def list_data():
+    session = SessionLocal()
+    
+    venue_data = []
+    event_data = []
+    booking_data = []
+
+    venues = session.query(Venue).all()
+    for venue in venues:
+        venue_info = {
+            "Venue ID": venue.id,
+            "Name": venue.name,
+            "Capacity": venue.capacity,
+        }
+        venue_data.append(venue_info)
+
+    events = session.query(Event).all()
+    for event in events:
+        event_info = {
+            "Event ID": event.id,
+            "Name": event.name,
+            "Date": event.date_time.strftime("%Y-%m-%d"),
+            "Venue": event.venue.name,
+        }
+        event_data.append(event_info)
+
+    bookings = session.query(Booking).all()
+    for booking in bookings:
+        booking_info = {
+            "Booking ID": booking.id,
+            "User": booking.user_name,
+            "Event": booking.event.name,
+        }
+        booking_data.append(booking_info)
+
+    session.close()
+
+    click.echo("Venues:")
+    for venue_info in venue_data:
+        click.echo(venue_info)
+
+    click.echo("\nEvents:")
+    for event_info in event_data:
+        click.echo(event_info)
+
+    click.echo("\nBookings:")
+    for booking_info in booking_data:
+        click.echo(booking_info)
+
+
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
     cli()
