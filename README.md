@@ -1,4 +1,4 @@
-# EVENT BOOKING SYSTEM
+# EVENT MANAGEMENT SYSTEM
 Attending events in the country is always a hectic process especially for anyone who is trying to book for the event. This process of event ticket booking is cumbersome and has led to numerous customer dissatisfaction. Many customers are faced with issues of denied entry due to inefficient systems. 
 
 With all these at hand, I decied to created a simple python based backend system intergrated with a command line interface. 
@@ -47,7 +47,7 @@ This backend system is composed of different functinoality
 
 
 # Features
-The features of the event booking system include the following:
+The features of the event management system include the following:
 1. Venue 
     a. Name of the venue - The name of the venue where the b. event is to be held
     c. Capacity of the venue - Maximum capacity the venue can hold. 
